@@ -4,11 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

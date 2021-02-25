@@ -8,25 +8,22 @@ import { ChatbotService } from '../chatbot.service';
   styleUrls: ['./chatbot.component.css']
 })
 export class ChatbotComponent implements OnInit {
-
-
+  
   constructor(private api:ChatbotService) { }
   answer=[];
   data:any=[];
   ngOnInit(): void {
   }
- 
-  
 
-  massage(massage:any)
+  message(message:any)
   {
-    this.data=massage.split(' ');
+    this.data=message.split(' ');
     console.log(this.data);
     (<HTMLInputElement>document.getElementById("form__input")).value=''
-    if(massage==''){
+    if(message==''){
       alert("Please Enter the Question")
     }
-    this.api.getMassage()
+    this.api.getMessage()
     .subscribe(data => {
       console.log(data)
       this.answer=data;
@@ -39,11 +36,11 @@ export class ChatbotComponent implements OnInit {
             userinput.innerHTML=this.data[i];
             userinput.id="user";
             userinput.className="chatarea-inner user"
-            document.getElementById('massage').appendChild(userinput);
+            document.getElementById('message').appendChild(userinput);
             var answer=document.createElement('div');
             answer.innerHTML=this.answer[j].answer;
             answer.className="chatarea-inner chatbot"
-            document.getElementById('massage').appendChild(answer);
+            document.getElementById('message').appendChild(answer);
             this.buttonnew()
             // this. iddetail()
           }
@@ -60,7 +57,7 @@ export class ChatbotComponent implements OnInit {
       btn.id="user";
       btn.addEventListener("click", (e:Event) => this.functionwithparam(i));
       btn.className="chatarea-inner btn"
-      document.getElementById('massage').appendChild(btn);
+      document.getElementById('message').appendChild(btn);
      }
     }
     buttonnew1(){
@@ -71,14 +68,14 @@ export class ChatbotComponent implements OnInit {
        btn.id="user";
        btn.addEventListener("click", (e:Event) => this.functionwithparam1(i));
         btn.className="chatarea-inner btn"
-       document.getElementById('massage').appendChild(btn);
+       document.getElementById('message').appendChild(btn);
       
       }
      }
     
       functionwithparam(i:any){
        if(i==0){
-        this.massagedetail()
+        this.messagedetail()
         this. buttonnew1()
        }
        else if(i==1){
@@ -102,13 +99,13 @@ export class ChatbotComponent implements OnInit {
         var h2=document.createElement('p')
          h2.innerHTML="Your Booking Id -> "+data[0].id +" "+"Your Booking Name  -> "+data[0].name+"   FACE Prep is India's best platform to prepare for your dream tech job. We offer ProGrad Certification program, free interview preparation";
          h2.className="chatarea-inner btn"        
-        document.getElementById('massage').appendChild(h2);
+        document.getElementById('message').appendChild(h2);
         this.buttonnew()
 
       });
      }
 
-      massagedetail(){
+      messagedetail(){
      
        var name=prompt("enter the name")
        var random=Math.floor(Math.random() * (9 * (Math.pow(10, 5)))) + (Math.pow(10, 5));
@@ -120,7 +117,7 @@ export class ChatbotComponent implements OnInit {
         var h1=document.createElement("h3")
         h1.className="chatarea-inner btn"
         h1.innerHTML="Your Id "+random
-        document.getElementById('massage').appendChild(h1);
+        document.getElementById('message').appendChild(h1);
   
     
      }

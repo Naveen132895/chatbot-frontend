@@ -14,7 +14,7 @@ export class ChatbotService {
 
   constructor(private http: HttpClient) { }
 
-  getMassage(): Observable<any> {
+  getMessage(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
   putdetail(name1 :string,id1:string) {
